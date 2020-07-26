@@ -1,5 +1,6 @@
 import React from "react";
 import { Consumer } from "./RadioGroupContext";
+import { RadioButtonInput, RadioButtonLabel } from './RadioButtonStyles';
 
 const RadioButton = ({ value, label }) => (
    <Consumer>
@@ -14,10 +15,10 @@ const RadioButton = ({ value, label }) => (
          if (selected) radioProps.checked = selected === value;
 
          return (
-            <label>
-               <input type='radio' {...radioProps} />
-               {label}
-            </label>
+            <>
+               <RadioButtonInput type='radio' {...radioProps} />
+               <RadioButtonLabel>{label}</RadioButtonLabel>
+            </>
          );
       }}
    </Consumer>

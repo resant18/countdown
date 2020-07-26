@@ -52,6 +52,10 @@ export const TimerSection = styled.div`
    justify-content: center;
    align-items: center;
 
+   div {
+      margin-right: 10px;
+   }
+
    .pause-button {
       border-radius: 50%;
       width: 80px;
@@ -65,4 +69,6 @@ export const TimerSection = styled.div`
 
 export const SpeedOptionSection = styled.div`
    display: flex;
+   justify-content: center;
+   margin-top: 50px;
 `
