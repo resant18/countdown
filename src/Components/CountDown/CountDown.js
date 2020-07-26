@@ -97,7 +97,7 @@ const CountDown = () => {
       return () => clearInterval(timerId);
    });
 
-   const handleSpeed = ({ target: { value } }) => {
+   const handleSpeed = ({ target: { value } }) => {            
       setSelectedSpeed(value);
    };   
 
@@ -117,9 +117,9 @@ const CountDown = () => {
             </TimerSection>
             <SpeedOptionSection>
                <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>
-                  <RadioButton label='1X' value='1' />
-                  <RadioButton label='1.5X' value='1.5' />
-                  <RadioButton label='2X' value='2' />
+                  <RadioButton id='speed-1' label='1X' value='1' />
+                  <RadioButton id='speed-1.5' label='1.5X' value='1.5' />
+                  <RadioButton id='speed-2' label='2X' value='2' />
                </RadioGroup>
             </SpeedOptionSection>
          </Content>

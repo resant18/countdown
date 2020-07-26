@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const RadioButtonInput = styled.input`
    cursor: pointer;
-   
+
    &[type="radio"] {
       opacity: 0;
       position: fixed;
@@ -20,6 +20,7 @@ export const RadioButtonInput = styled.input`
 `;
    
    export const RadioButtonLabel = styled.label`
+      cursor: pointer;
       display: inline-block;
       padding: 10px 20px;
       font-size: 1em;

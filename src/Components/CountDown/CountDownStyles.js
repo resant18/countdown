@@ -100,6 +100,5 @@ export const TimerSection = styled.div`
 export const SpeedOptionSection = styled.div`
    display: flex;
    justify-content: center;
-   margin-top: 50px;
-   cursor: pointer;
+   margin-top: 50px;   
 `
