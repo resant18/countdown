@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const RadioButtonInput = styled.input`
+   cursor: pointer;
+   
    &[type="radio"] {
       opacity: 0;
       position: fixed;
@@ -15,7 +17,7 @@ export const RadioButtonInput = styled.input`
    &[type="radio"]:focus + label {
       border: 2px dashed #444;
    }   
-   `;
+`;
    
    export const RadioButtonLabel = styled.label`
       display: inline-block;
