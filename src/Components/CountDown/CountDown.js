@@ -4,13 +4,14 @@ import validate from "../../validation";
 import Timer from "../Timer";
 import RadioGroup from "../RadioGroupButton/RadioGroup";
 import RadioButton from "../RadioGroupButton/RadioButton";
-import { Wrapper, Content, Label, Error, TimerInputSection, StartButtonSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
+import { Wrapper, Content, Label, Error, TimerInputSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
 
 const CountDown = () => {
    const [startInMinutes, setStartInMinutes] = useState('');
    const [minutes, setMinutes] = useState(0);
    const [seconds, setSeconds] = useState(0);
    const [isActive, setIsActive] = useState(false);
+   const [isPaused, setIsPaused] = useState(false);
    const [isOver, setIsOver] = useState(false);
    const [isHalfway, setIsHalfway] = useState(false);
    const [className, setClassName] = useState("");   
@@ -62,6 +63,7 @@ const CountDown = () => {
             reset();
          } else if (state === "pause") {
             setIsActive((isActive) => !isActive);
+            setIsPaused((isPaused) => !isPaused);            
          }
       }
    };
@@ -115,13 +117,13 @@ const CountDown = () => {
             <Error>{error}</Error>
             <TimerInputSection>
                <Label htmlFor='timeInput'>Countdown: </Label>
-               <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />
+               <TimerInput startInMinutes={startInMinutes} placeholder={'(Mins)'} handleInput={handleInput} />
                <input type='button' value='START' className='start-button' onClick={(e) => handleCountDown("start")} />
             </TimerInputSection>            
             <Notification>{renderNotification()}</Notification>
             <TimerSection>
                <Timer minutes={minutes} seconds={seconds} className={className} />
-               <input type='button' value='| |' className='pause-button' onClick={(e) => handleCountDown("pause")} />
+               <input type='button' value='| |' className={`pause-button ${isPaused ? 'active' : 'inactive'}`} onClick={(e) => handleCountDown("pause")} />
             </TimerSection>
             <SpeedOptionSection>
                <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>

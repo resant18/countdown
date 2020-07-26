@@ -35,14 +35,27 @@ export const TimerInputSection = styled.div`
    }
 
    .start-button {
-      background-color: #69b4a0;
-      border: none;
+      background-color: #69b4a0;      
       color: white;
       cursor: pointer;
+      border: 0 solid;
+      box-shadow: inset 0 0 20px rgba(13, 255, 255, 0);
+      outline: 1px solid;
+      outline-color: rgba(13, 255, 255, .5);
+      outline-offset: 0px;
+      text-shadow: none;
+      transition: all 1250ms cubic-bezier(0.19, 1, 0.22, 1);
+
+      &:hover {
+         border: 1px solid;
+         background-color: #f6b93b;
+         box-shadow: inset 0 0 20px rgba(13, 255, 255, .5), 0 0 20px rgba(13, 255, 255, .2);
+         outline-color: rgba(13, 255, 255, 0);
+         outline-offset: 15px;
+         text-shadow: 1px 1px 2px #427388; 
+      }
    }
 `;
-
-export const StartButtonSection = styled.div``;
 
 export const Notification = styled.h1`
    font-size: 1.5em;
@@ -74,16 +87,31 @@ export const TimerSection = styled.div`
       width: 550px;
    }
 
-   .pause-button {
+   input.active {
+      background-color: #f6b93b;
+   }
+
+   input.inactive {
+      background-color: transparent;
+   }
+
+   input.pause-button {
       border-radius: 50%;
       width: 80px;
-      height: 80px;
-      background-color: transparent;
+      height: 80px;      
       border: 4px solid;
       font-size: 0.2em;
       font-weight: 700;
       cursor: pointer;
-   }
+      outline: 0;
+
+      &:focus, &:hover {
+         color: #ffffff !important;
+         background: #f6b93b;
+         border-color: #f6b93b !important;
+         transition: all 0.4s ease 0s;
+      }
+   }   
 `;
 
 export const SpeedOptionSection = styled.div`
