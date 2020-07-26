@@ -7,7 +7,7 @@ import RadioButton from "../RadioGroupButton/RadioButton";
 import { Wrapper, Content, Label, Error, TimerInputSection, StartButtonSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
 
 const CountDown = () => {
-   const [startInMinutes, setStartInMinutes] = useState("");
+   const [startInMinutes, setStartInMinutes] = useState('');
    const [minutes, setMinutes] = useState(0);
    const [seconds, setSeconds] = useState(0);
    const [isActive, setIsActive] = useState(false);
@@ -22,13 +22,19 @@ const CountDown = () => {
    const handleInput = (e) => {
       e.preventDefault();
 
-      let mins = Number(e.target.value);
-      setError(validate(mins));
-      setStartInMinutes(mins);
-      setMinutes(mins);
+      let mins = e.target.value; 
+      let error = validate(mins);
+      setError(error);         
+      if (error) {         
+         setMinutes(0);
+      }     
+      else {         
+         setStartInMinutes(mins);
+         setMinutes(Number(mins));      
+      }
    };
 
-   const tick = () => {
+   const tick = () => {      
       timeLeft = minutes * 60 + seconds;
 
       timeLeft--;
@@ -65,13 +71,15 @@ const CountDown = () => {
       let halfTime = Math.floor((mins * 60) / 2);
 
       timeLeft <= halfTime ? setIsHalfway(true) : setIsHalfway(false);
-
-      timeLeft <= 10
-         ? setClassName((className) => className + " blink")
-         : setClassName((className) => className.replace("blink", ""));
-      timeLeft <= 20
-         ? setClassName((className) => className + " red")
-         : setClassName((className) => className.replace("red", ""));
+      if (timeLeft <= 10) {
+         setClassName('red blink');
+      } 
+      else if (timeLeft <= 20) {
+         setClassName('red');         
+      }
+      else {
+         setClassName('');
+      }
    };
 
    const renderNotification = () => {
