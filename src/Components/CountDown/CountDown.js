@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import TimerInput from "./TimerInput";
-import validate from "../validation";
-import Timer from "./Timer";
-import RadioGroup from "./RadioGroupButton/RadioGroup";
-import RadioButton from "./RadioGroupButton/RadioButton";
+import TimerInput from "../TimerInput";
+import validate from "../../validation";
+import Timer from "../Timer";
+import RadioGroup from "../RadioGroupButton/RadioGroup";
+import RadioButton from "../RadioGroupButton/RadioButton";
+import { Wrapper, Content, Label, Error, TimerInputSection, StartButtonSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
 
 const CountDown = () => {
    const [startInMinutes, setStartInMinutes] = useState("");
@@ -75,9 +76,9 @@ const CountDown = () => {
 
    const renderNotification = () => {
       if (isOver) {
-         return <h1>Time's up!</h1>;
+         return "Time's up!";
       } else if (isHalfway) {
-         return <h1>More than halfway there!</h1>;
+         return "More than halfway there!";
       } else return null;
    };
 
@@ -98,25 +99,31 @@ const CountDown = () => {
 
    const handleSpeed = ({ target: { value } }) => {
       setSelectedSpeed(value);
-   };
+   };   
 
    return (
-      <div>
-         <label htmlFor='timeInput'>CountDown: </label>
-         {error}
-         <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />
-         <input type='button' value='||' onClick={(e) => handleCountDown("pause")} />
-         <input type='button' value='START' onClick={(e) => handleCountDown("start")} />
-         {renderNotification()}
-         <Timer minutes={minutes} seconds={seconds} className={className} />
-         <div>
-            <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>
-               <RadioButton label='1X' value='1' />
-               <RadioButton label='1.5X' value='1.5' />
-               <RadioButton label='2X' value='2' />
-            </RadioGroup>
-         </div>
-      </div>
+      <Wrapper>
+         <Content>
+            <Error>{error}</Error>
+            <TimerInputSection>
+               <Label htmlFor='timeInput'>Countdown: </Label>
+               <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />
+               <input type='button' value='START' className='start-button' onClick={(e) => handleCountDown("start")} />
+            </TimerInputSection>            
+            <Notification>{renderNotification()}</Notification>
+            <TimerSection>
+               <Timer minutes={minutes} seconds={seconds} className={className} />
+               <input type='button' value='||' onClick={(e) => handleCountDown("pause")} />
+            </TimerSection>
+            <SpeedOptionSection>
+               <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>
+                  <RadioButton label='1X' value='1' />
+                  <RadioButton label='1.5X' value='1.5' />
+                  <RadioButton label='2X' value='2' />
+               </RadioGroup>
+            </SpeedOptionSection>
+         </Content>
+      </Wrapper>
    );
 };
 
