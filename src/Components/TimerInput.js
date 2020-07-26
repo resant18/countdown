@@ -1,10 +1,11 @@
 import React from "react";
 
-const TimerInput = ({ startInMinutes, handleInput }) => {
+const TimerInput = ({ startInMinutes, placeholder, handleInput }) => {
    return (
       <input
          id='timerInput'
-         type='number'         
+         type='number'     
+         placeholder={placeholder}    
          value={startInMinutes}
          onChange={handleInput}
       />
