@@ -22,7 +22,7 @@ export const Error = styled.p`
 
 export const TimerInputSection = styled.div`
    display: flex;
-   line-height: 1.8em;
+   line-height: 1.8em;   
 
    input {
       font-size: 1em;      
@@ -49,6 +49,17 @@ export const TimerSection = styled.div`
    font-size: 6em;
    display: flex;
    justify-content: center;
+   align-items: center;
+
+   .pause-button {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      background-color: transparent;
+      border: 4px solid;
+      font-size: 0.2em;
+      font-weight: 700;
+   }
 `;
 
 export const SpeedOptionSection = styled.div`

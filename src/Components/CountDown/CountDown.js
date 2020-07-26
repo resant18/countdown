@@ -113,7 +113,7 @@ const CountDown = () => {
             <Notification>{renderNotification()}</Notification>
             <TimerSection>
                <Timer minutes={minutes} seconds={seconds} className={className} />
-               <input type='button' value='||' onClick={(e) => handleCountDown("pause")} />
+               <input type='button' value='| |' className='pause-button' onClick={(e) => handleCountDown("pause")} />
             </TimerSection>
             <SpeedOptionSection>
                <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>
