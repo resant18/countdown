@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const Timer = ({ minutes, seconds, className }) => {
   const formatMinutes = (minutes, digit) => {
-    if (digit === 2) return minutes < 10 ? "0" + minutes : minutes;
+    if (digit === 2) return minutes < 10 ? '0' + minutes : minutes;
     else return minutes;
   };
 
   const formatSeconds = (seconds, digit) => {
-    if (digit === 2) return seconds < 10 ? "0" + seconds : seconds;
+    if (digit === 2) return seconds < 10 ? '0' + seconds : seconds;
     else return seconds;
   };
   

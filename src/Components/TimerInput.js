@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const TimerInput = ({ startInMinutes, placeholder, handleInput }) => {
    return (

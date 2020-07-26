@@ -1,5 +1,5 @@
-import React from "react";
-import { Consumer } from "./RadioGroupContext";
+import React from 'react';
+import { Consumer } from './RadioGroupContext';
 import { RadioButtonInput, RadioButtonLabel } from './RadioButtonStyles';
 
 const RadioButton = ({ id, value, label }) => (

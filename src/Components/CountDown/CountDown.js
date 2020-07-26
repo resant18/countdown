@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import TimerInput from "../TimerInput";
-import validate from "../../validation";
-import Timer from "../Timer";
-import RadioGroup from "../RadioGroupButton/RadioGroup";
-import RadioButton from "../RadioGroupButton/RadioButton";
+import React, { useState, useEffect } from 'react';
+import TimerInput from '../TimerInput';
+import validate from '../../validation';
+import Timer from '../Timer';
+import RadioGroup from '../RadioGroupButton/RadioGroup';
+import RadioButton from '../RadioGroupButton/RadioButton';
 import { Wrapper, Content, Label, Error, TimerInputSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
 
 const CountDown = () => {
@@ -14,8 +14,8 @@ const CountDown = () => {
    const [isPaused, setIsPaused] = useState(false);
    const [isOver, setIsOver] = useState(false);
    const [isHalfway, setIsHalfway] = useState(false);
-   const [className, setClassName] = useState("");   
-   const [selectedSpeed, setSelectedSpeed] = useState("1");
+   const [className, setClassName] = useState('');   
+   const [selectedSpeed, setSelectedSpeed] = useState('1');
    const [error, setError] = useState(null);
 
    let timeLeft;
@@ -58,10 +58,10 @@ const CountDown = () => {
    const handleCountDown = (state) => {
       setError(validate(startInMinutes));
       if (startInMinutes > 0) {
-         if (state === "start") {
+         if (state === 'start') {
             setIsActive(true);
             reset();
-         } else if (state === "pause") {
+         } else if (state === 'pause') {
             setIsActive((isActive) => !isActive);
             setIsPaused((isPaused) => !isPaused);            
          }
@@ -86,9 +86,9 @@ const CountDown = () => {
 
    const renderNotification = () => {
       if (isOver) {
-         return "Time's up!";
+         return `Time's up!`;
       } else if (isHalfway) {
-         return "More than halfway there!";
+         return 'More than halfway there!';
       } else return null;
    };
 
@@ -118,12 +118,12 @@ const CountDown = () => {
             <TimerInputSection>
                <Label htmlFor='timeInput'>Countdown: </Label>
                <TimerInput startInMinutes={startInMinutes} placeholder={'(Mins)'} handleInput={handleInput} />
-               <input type='button' value='START' className='start-button' onClick={(e) => handleCountDown("start")} />
+               <input type='button' value='START' className='start-button' onClick={(e) => handleCountDown('start')} />
             </TimerInputSection>            
             <Notification>{renderNotification()}</Notification>
             <TimerSection>
                <Timer minutes={minutes} seconds={seconds} className={className} />
-               <input type='button' value='| |' className={`pause-button ${isPaused ? 'active' : 'inactive'}`} onClick={(e) => handleCountDown("pause")} />
+               <input type='button' value='| |' className={`pause-button ${isPaused ? 'active' : 'inactive'}`} onClick={(e) => handleCountDown('pause')} />
             </TimerSection>
             <SpeedOptionSection>
                <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>

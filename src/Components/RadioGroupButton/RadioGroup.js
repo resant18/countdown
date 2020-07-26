@@ -1,5 +1,5 @@
-import React from "react";
-import { Provider } from "./RadioGroupContext";
+import React from 'react';
+import { Provider } from './RadioGroupContext';
 
 const RadioGroup = ({ selected, onChange, name, children, className }) => (
    <Provider

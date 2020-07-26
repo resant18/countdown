@@ -10,11 +10,11 @@ export const Wrapper = styled.main`
 export const Content = styled.div`
    height: 50vh;
    font-size: 28px;
-`
+`;
 
 export const Label = styled.label`
    margin-right: 10px;
-`
+`;
 
 export const Error = styled.p`
    color: red;   
