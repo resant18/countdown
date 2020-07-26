@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import TimerInput from "./TimeInput";
 import Timer from "./Timer";
+import RadioGroup from "./RadioGroupButton/RadioGroup";
+import RadioButton from "./RadioGroupButton/RadioButton";
 
 const CountDown = () => {
    const [startInMinutes, setStartInMinutes] = useState("");
@@ -10,6 +12,7 @@ const CountDown = () => {
    const [isOver, setIsOver] = useState(false);
    const [isHalfway, setIsHalfway] = useState(false);
    const [className, setClassName] = useState("");   
+   const [selectedSpeed, setSelectedSpeed] = useState("1");   
 
    let timeLeft;
 
@@ -34,7 +37,7 @@ const CountDown = () => {
          setSeconds(timeLeft - min * 60);
          checkTimeLeft();
       }
-   };   
+   };
 
    const checkTimeLeft = () => {
       let mins = startInMinutes;
@@ -71,14 +74,25 @@ const CountDown = () => {
       }
 
       return () => clearInterval(timerId);
-   });   
+   });
+
+   const handleSpeed = ({ target: { value } }) => {
+      setSelectedSpeed(value);
+   };
 
    return (
       <div>
          <label htmlFor='timeInput'>CountDown: </label>         
          <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />         
          {renderNotification()}
-         <Timer minutes={minutes} seconds={seconds} className={className} />         
+         <Timer minutes={minutes} seconds={seconds} className={className} />
+         <div>
+            <RadioGroup name='speed' selected={selectedSpeed} onChange={handleSpeed}>
+               <RadioButton label='1X' value='1' />
+               <RadioButton label='1.5X' value='1.5' />
+               <RadioButton label='2X' value='2' />
+            </RadioGroup>
+         </div>
       </div>
    );
 };
