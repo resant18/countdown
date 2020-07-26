@@ -37,13 +37,42 @@ export const TimerInputSection = styled.div`
       background-color: #69b4a0;
       border: none;
       color: white;
+      cursor: pointer;
    }
 `;
 
 export const StartButtonSection = styled.div``;
 
 export const Notification = styled.h1`
-   font-size: 2em;
+   font-size: 1.5em;
+   display: flex;
+   justify-content: center;
+
+   .red {
+      color: red;
+   }
+
+   .blink {
+      animation: blinkingText 1.2s infinite;
+   }
+
+   @keyframes blinkingText {
+      0% {
+         color: #000;
+      }
+      49% {
+         color: rgb(32, 29, 29);
+      }
+      60% {
+         color: transparent;
+      }
+      99% {
+         color: transparent;
+      }
+      100% {
+         color: #000;
+      }
+      }
 `;
 
 export const TimerSection = styled.div`
@@ -53,7 +82,7 @@ export const TimerSection = styled.div`
    align-items: center;
 
    div {
-      margin-right: 10px;
+      width: 550px;
    }
 
    .pause-button {
@@ -64,6 +93,7 @@ export const TimerSection = styled.div`
       border: 4px solid;
       font-size: 0.2em;
       font-weight: 700;
+      cursor: pointer;
    }
 `;
 
@@ -71,4 +101,5 @@ export const SpeedOptionSection = styled.div`
    display: flex;
    justify-content: center;
    margin-top: 50px;
+   cursor: pointer;
 `
