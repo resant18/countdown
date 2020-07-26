@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import TimerInput from "./TimeInput";
+import TimerInput from "./TimerInput";
+import validate from "../validation";
 import Timer from "./Timer";
 import RadioGroup from "./RadioGroupButton/RadioGroup";
 import RadioButton from "./RadioGroupButton/RadioButton";
@@ -12,14 +13,16 @@ const CountDown = () => {
    const [isOver, setIsOver] = useState(false);
    const [isHalfway, setIsHalfway] = useState(false);
    const [className, setClassName] = useState("");   
-   const [selectedSpeed, setSelectedSpeed] = useState("1");   
+   const [selectedSpeed, setSelectedSpeed] = useState("1");
+   const [error, setError] = useState(null);
 
    let timeLeft;
 
    const handleInput = (e) => {
       e.preventDefault();
 
-      let mins = Number(e.target.value);      
+      let mins = Number(e.target.value);
+      setError(validate(mins));
       setStartInMinutes(mins);
       setMinutes(mins);
    };
@@ -44,7 +47,8 @@ const CountDown = () => {
       setSeconds(0);
    };
 
-   const handleCountDown = (state) => {      
+   const handleCountDown = (state) => {
+      setError(validate(startInMinutes));
       if (startInMinutes > 0) {
          if (state === "start") {
             setIsActive(true);
@@ -98,7 +102,8 @@ const CountDown = () => {
 
    return (
       <div>
-         <label htmlFor='timeInput'>CountDown: </label>         
+         <label htmlFor='timeInput'>CountDown: </label>
+         {error}
          <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />
          <input type='button' value='||' onClick={(e) => handleCountDown("pause")} />
          <input type='button' value='START' onClick={(e) => handleCountDown("start")} />
