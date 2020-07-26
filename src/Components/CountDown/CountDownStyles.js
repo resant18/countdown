@@ -22,7 +22,8 @@ export const Error = styled.p`
 
 export const TimerInputSection = styled.div`
    display: flex;
-   line-height: 1.8em;   
+   line-height: 1.8em;
+   justify-content: center;
 
    input {
       font-size: 1em;      
