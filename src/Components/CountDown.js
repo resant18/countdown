@@ -19,8 +19,7 @@ const CountDown = () => {
    const handleInput = (e) => {
       e.preventDefault();
 
-      let mins = Number(e.target.value);
-      setError(validate(mins));
+      let mins = Number(e.target.value);      
       setStartInMinutes(mins);
       setMinutes(mins);
    };
@@ -36,6 +35,23 @@ const CountDown = () => {
          setMinutes(min);
          setSeconds(timeLeft - min * 60);
          checkTimeLeft();
+      }
+   };
+
+   const reset = () => {
+      timeLeft = startInMinutes * 60;
+      setMinutes(startInMinutes);
+      setSeconds(0);
+   };
+
+   const handleCountDown = (state) => {      
+      if (startInMinutes > 0) {
+         if (state === "start") {
+            setIsActive(true);
+            reset();
+         } else if (state === "pause") {
+            setIsActive((isActive) => !isActive);
+         }
       }
    };
 
@@ -83,7 +99,9 @@ const CountDown = () => {
    return (
       <div>
          <label htmlFor='timeInput'>CountDown: </label>         
-         <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />         
+         <TimerInput startInMinutes={startInMinutes} handleInput={handleInput} />
+         <input type='button' value='||' onClick={(e) => handleCountDown("pause")} />
+         <input type='button' value='START' onClick={(e) => handleCountDown("start")} />
          {renderNotification()}
          <Timer minutes={minutes} seconds={seconds} className={className} />
          <div>
