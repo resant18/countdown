@@ -18,6 +18,7 @@ export const Label = styled.label`
 
 export const Error = styled.p`
    color: red;   
+   text-align: center;
 `;
 
 export const TimerInputSection = styled.div`
@@ -57,22 +58,10 @@ export const Notification = styled.h1`
    }
 
    @keyframes blinkingText {
-      0% {
-         color: #000;
-      }
-      49% {
-         color: rgb(32, 29, 29);
-      }
-      60% {
-         color: transparent;
-      }
-      99% {
-         color: transparent;
-      }
-      100% {
-         color: #000;
-      }
-      }
+      0%{opacity: 0;}
+      50%{opacity: .5;}
+      100%{opacity: 1;}
+   }
 `;
 
 export const TimerSection = styled.div`
