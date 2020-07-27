@@ -10,20 +10,8 @@ export const Container = styled.div`
    }
 
    @keyframes blinkingText {
-      0% {
-         color: red;
-      }
-      49% {
-         color: pink;
-      }
-      60% {
-         color: transparent;
-      }
-      99% {
-         color: transparent;
-      }
-      100% {
-         color: red;
-      }
+      0% { opacity: 1.0; }
+      50% { opacity: 0.0; }
+      100% { opacity: 1.0; }
    }
 `;
