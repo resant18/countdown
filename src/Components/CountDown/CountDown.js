@@ -42,10 +42,11 @@ const CountDown = () => {
       if (timeLeft < 0) {
          setIsOver(true);
       } else {
+         setIsOver(false);
          let min = Math.floor(timeLeft / 60);
          setMinutes(min);
          setSeconds(timeLeft - min * 60);
-         checkTimeLeft();
+         checkTimeLeft();         
       }
    };
 
@@ -60,6 +61,7 @@ const CountDown = () => {
       if (startInMinutes > 0) {
          if (state === 'start') {
             setIsActive(true);
+            setIsPaused(false);
             reset();
          } else if (state === 'pause') {
             setIsActive((isActive) => !isActive);
