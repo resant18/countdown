@@ -1,4 +1,5 @@
 import React from 'react';
+import { Container } from './TimerStyles';
 
 const Timer = ({ minutes, seconds, className }) => {
   const formatMinutes = (minutes, digit) => {
@@ -12,9 +13,9 @@ const Timer = ({ minutes, seconds, className }) => {
   };
   
   return (
-    <div className={className}>
+    <Container className={className}>
       {formatMinutes(minutes, 2)} : {formatSeconds(seconds, 2)}
-    </div>
+    </Container>
   );
 };
 

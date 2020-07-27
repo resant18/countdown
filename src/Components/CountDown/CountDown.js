@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TimerInput from '../TimerInput';
 import validate from '../../validation';
-import Timer from '../Timer';
+import Timer from '../Timer/Timer';
 import RadioGroup from '../RadioGroupButton/RadioGroup';
 import RadioButton from '../RadioGroupButton/RadioButton';
 import { Wrapper, Content, Label, Error, TimerInputSection, Notification, TimerSection, SpeedOptionSection } from './CountDownStyles';
